@@ -18,7 +18,9 @@ const store = configureStore({
     persistedReducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({ thunk: false }).concat(sagaMiddleware),
+    getDefaultMiddleware({ thunk: false, serializableCheck: false }).concat(
+      sagaMiddleware
+    ),
 });
 
 export const persistor = persistStore(store);
