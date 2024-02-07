@@ -13,7 +13,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const MyForm = () => {
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.persistedReducer.user);
   const dispatch = useDispatch();
   const [formErrors, setFormErrors] = useState({});
 
@@ -56,7 +56,6 @@ const MyForm = () => {
   return (
     <>
       <Container>
-        <Input value={user.id} fullWidth disabled />
         <Input
           onChange={handleChange("name")}
           placeholder="Enter Name"

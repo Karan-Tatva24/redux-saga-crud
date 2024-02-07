@@ -12,7 +12,8 @@ import Button from "@mui/material/Button";
 import { DELETE_USER_BY_ID, GET_USERS } from "../redux/types";
 
 export default function MyTable() {
-  const rows = useSelector((state) => state.users);
+  const rows = useSelector((state) => state.persistedReducer.users);
+  console.log(rows);
   const dispatch = useDispatch();
   React.useEffect(() => {
     dispatch({ type: GET_USERS });
