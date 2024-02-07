@@ -13,11 +13,9 @@ const users = createSlice({
   reducers: {
     getUsersSlice: (state, action) => {
       state = action.payload;
-      return state;
     },
     addUserSlice: (state, action) => {
       state.push(action.payload);
-      return state;
     },
     editUserSlice: (state, action) => {
       state = state.map((i) =>

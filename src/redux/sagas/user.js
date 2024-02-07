@@ -19,30 +19,30 @@ import {
   GET_USER_BY_ID,
   UPDATE_USER_BY_ID,
 } from "../types";
-import { takeEvery, put } from "redux-saga/effects";
+import { takeEvery, put, call } from "redux-saga/effects";
 
 export function* getUsersSaga() {
-  const users = yield getUsersAPI();
+  const users = yield call(getUsersAPI);
   yield put(getUsersSlice(users.data));
 }
 
 export function* getUserByIdSaga(action) {
-  yield getUsersByIdAPI(action.id);
+  yield call(getUsersByIdAPI, action.id);
   yield put(setUserSlice(action.id));
 }
 
 export function* createUserSaga(action) {
-  yield createUserAPI(action.user);
+  yield call(createUserAPI, action.user);
   yield put(addUserSlice(action.user));
 }
 
 export function* updateUserSaga(action) {
-  yield updateUserAPI(action.user);
+  yield call(updateUserAPI, action.user);
   yield put(editUserSlice(action.user));
 }
 
 export function* deleteUserIdSaga(action) {
-  yield deleteUserByIdAPI(action.id);
+  yield call(deleteUserByIdAPI, action.id);
   yield put(deleteUsersSlice(action.id));
 }
 
